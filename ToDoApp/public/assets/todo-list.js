@@ -4,10 +4,9 @@ $(document).ready(function(){
 
       var item = $('form input');
       var todo = {item: item.val()};
-
       $.ajax({
         type: 'POST',
-        url: '/todo',
+        url: window.location.href,
         data: todo,
         success: function(data){
           //do something with the data via front-end framework
@@ -23,12 +22,17 @@ $(document).ready(function(){
       var item = $(this).text().replace(/ /g, "-");
       $.ajax({
         type: 'DELETE',
-        url: '/todo/' + item,
+        url: window.location.href + '/' + item,
         success: function(data){
           //do something with the data via front-end framework
           location.reload();
         }
       });
   });
+
+  $('#logout').on('click', function(){
+      alert("logged out successfully!!!");
+  });
+
 
 });

@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+
+h1{
+	
+	font-family: Lobster;
+	font-size: 70px;
+
+}
+.main{
+	text-align: center;
+	background-image: url(/assets/library.jpg);
+  	background-size: cover;
+  	height: 800px;
+
+  	opacity:0.75;
+
+}
+
+p{
+	font-family: Lobster;
+	font-size: 50px;	
+}
+
+a{
+	font-size: 30px;
+	font-family: Lobster;
+	color: blue;
+}
+
+
+
+a:hover { color: green; font-size: 32px;}
+
+

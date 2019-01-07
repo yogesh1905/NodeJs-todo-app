@@ -1,0 +1,38 @@
+<html>
+  <head>
+  	<title>Signup</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="crossorigin="anonymous"></script>
+    <link href='/assets/signupstyle.css' type='text/css' rel='stylesheet'>
+    <!--<script src="assets/signup.js"></script>-->
+  </head>
+  <body>
+    <div>
+      <p>Already have an account?</p>
+      <a href=/login>LOGIN</a>
+    </div>
+    <br>
+    <br>
+    <p>Signup Below</p>
+    <div id="signup-table">
+      <form method="post" action="/signup">
+    	  <lable for="username">Enter your Username</lable>
+        <br>
+      	<input type="text" name="username" placeholder="Enter your username..." id="foo">
+      	<br>
+        <br>
+        <label for="password">Enter Password</label>
+      	<br>
+        <input type="password" name="password" placeholder="Enter your password..." id="bar">
+      	<br>
+        <br>
+        <button type="submit" id="btn">Register</button>
+      </form>
+    </div>
+    <script>
+      var bt = document.getElementById("btn");
+      bt.onclick = function(){
+        this.setAttribute("style", "background-color: green;");
+      };
+    </script>
+  </body>
+</html>
