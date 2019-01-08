@@ -52,43 +52,34 @@ module.exports = function(app){
 
 	app.post('/login', urlencodedParser, function(req, res){
 		var newLogin = req.body;
+		var data = {error: false, username: newLogin.username, password: newLogin.password};
 		User.findOne({username: newLogin.username, password: newLogin.password}, function (err, obj){
 			if(err)
 				throw err;
 			if(obj === null){
-				res.redirect('/invalid');
-			}	
-			else{
-				var str = '/todo/' + newLogin.username;
-				res.redirect(str);
+				data.error = true;
 			}
+			res.json(data);	
+			
 		});
 		
 	});
 	
 
 	app.post('/signup', urlencodedParser, function(req, res){
-		console.log("iefjslfs");
-		var userInfo = {username: req.body.username, password: req.body.password};
+		var userInfo = {error: false, username: req.body.username, password: req.body.password};
 		//console.log(userInfo);         //To check the data returned
 		User.findOne({username: req.body.username}, function(err, obj){
 			if(err) throw err;
-			if(obj == null){
+			if(obj === null){
 				var newUser = User(userInfo).save(function(err, data){
-					if(err) throw err;
-					console.log(data);
-					var str = '/todo/' + userInfo.username;
-					res.redirect(str);
-					//var newObj = {error: "false", data: data};
-					//res.json(newObj);
+					if(err) throw err;	
 				});
 			}
 			else
-			{
-				res.redirect('/already-taken');
-				//var newObj = {error: "true", data: userInfo};
-				//res.json(newObj);
-			}
+				userInfo.error = true;
+			
+			res.json(userInfo);
 
 		});
 	});
@@ -98,7 +89,6 @@ module.exports = function(app){
 
 	app.get('/todo/:name', function(req, res){
 		//get data from mongodb and pass it to view
-		console.log(req.params.name);
 		Todo.find({user: req.params.name}, function(err, data){
 			if(err) throw err;
 			res.render('todo', {todos: data});

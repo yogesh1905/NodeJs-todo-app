@@ -2,13 +2,12 @@
   <head>
   	<title>Login</title>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="crossorigin="anonymous"></script>
-    
    <style>
      body{
-    background: #0d1521;
-    font-family: tahoma;
-    color: #989898;
-   }
+      background: #0d1521;
+      font-family: tahoma;
+      color: #989898;
+    }
 
     #login-table{
       position: relative;
@@ -26,30 +25,38 @@
       cursor: pointer;
       border-radius: 12px;
     }
+    #invalidUsername,#invalidPassword{
+      color: red;
+      font-size: 10px;
+    }
+    #btn:hover{background-color: green;}
+    a{
+      padding-left: 100px;
+      text-decoration: none;
+      color: blue;
+      font-size: 20px;
+    }
+    a:hover {color: green; font-size: 22px;}
    </style>
   </head>
   <body>
   	<div id="login-table">
-      <form method="post" action="/login"  > 
+      <form><!-- method="post" action="/login"  > -->
         <lable for="username">Enter your Username</lable>
         <br>
       	<input type="text" name="username" placeholder="Enter your username..." id='foo'>
-      	<br>
+        <p id='invalidUsername'></p>
         <br>
         <label for="password">Enter Password</label>
       	<br>
         <input type="password" name="password" placeholder="Enter your password..." id='bar'>
-      	<br>
+      	<p id='invalidPassword'></p>
         <br>
         <button type="submit" id="btn">Enter</button>
         <br>
       </form>
     </div>
-    <script>
-      var bt = document.getElementById("btn");
-      bt.onclick = function(){
-        this.setAttribute("style", "background-color: green;");
-      };
-    </script>
+    <a href='/signup'>SIGNUP</a>
+    <script src="/assets/login.js"></script>
   </body>
 </html>

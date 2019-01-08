@@ -1,30 +1,29 @@
 
 $(document).ready(function(){
     $('form').on('submit', function(){ // when submit button is pressed a request to /login url is made which is handled by the todoController file
-      var info={error: 'false', username: $('#foo').val(), password: $('#bar').val()};
+      var info={username: $('#foo').val(), password: $('#bar').val()};
       $.ajax({
         type: 'POST',
         url: '/signup',
         data: info,
+        dataType: 'json',
         success: function(result){
-              alert('ajax request completed');
-              if(result.error === "false"){
-                var str = '/todo/' + result.data.username;
-                document.location.assign(str);
+              if(result.error === false){
+                var str = '/todo/' + result.username;
+                document.location.replace(str);
               }
               else
               {
-                document.location.assign('/signup');
+                  usernameTag = document.getElementById('invalidUsername');
+                  usernameTag.innerHTML = 'Username already taken';
+                  inputTags = document.getElementsByTagName('input');
+                  inputTags[0].setAttribute('style', 'border: 1px solid red;');
               }
-        
-            }
-      
-          
+        }
       });
-        
+      return false;
       
     });
-      return true;
 });
 
 
