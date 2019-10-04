@@ -1,5 +1,5 @@
 A basic todo app using javascript nodejs framework, express as middleware and mongodb for storing
-user data. Request to server is made through ajax.
+user data. Request to the server is made through ajax.
 The app contains features like:
 * Creating user using signup option.
 * User authentication feature.
